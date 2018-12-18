@@ -9,32 +9,18 @@
 task main()
 {
 
-/*	untilBump(bumpSwitch);
-startMotor(rightMotor, 64);
-startMotor(leftMotor, 64);
-lineTrackForTime(6, 3, in1, in2);
-untilSonarLessThan(7,sonar);
-wait(0.5);
-stopMotor(rightMotor);
-stopMotor(leftMotor);
-wait(5);
-startMotor(rightMotor,-64);
-startMotor(leftMotor,-64);
-lineTrackForTime(6,3,in1, in3);
-stopMotor(rightMotor);
-stopMotor(leftMotor);
-
-*/
+char bob;
+bob = SensorValue(sonar);
 untilBump(bumpSwitch);
 	startMotor(rightMotor, 88);
-	startMotor(leftMotor,  63);
-	untilSonarLessThan(10, sonar);
+	startMotor(leftMotor,  80);
+	untilSonarLessThan(8, sonar);
 	stopMotor(rightMotor);
 	stopMotor(leftMotor);
 		wait(5);
-	startMotor(rightMotor,70);
-	startMotor(leftMotor,80);
-    wait(5);
+	startMotor(rightMotor,88);
+	startMotor(leftMotor,-80);
+    untilSonarGreaterThan(bob-2,sonar);
   stopMotor(rightMotor);
   stopMotor(leftMotor);
 }
