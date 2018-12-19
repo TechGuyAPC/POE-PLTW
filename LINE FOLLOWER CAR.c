@@ -24,3 +24,41 @@ untilBump(bumpSwitch);
   stopMotor(rightMotor);
   stopMotor(leftMotor);
 }
+untilBump(bumpSwitch);
+	while (1==1)
+	{
+		if ((SensorValue(lineFollowerR) >= 2200 ) && (SensorValue(lineFollowerL) >= 2200)) //if the line follower reads that the higher values which represent that it is darker
+		{
+			startMotor(rightMotor,20);
+			startMotor(leftMotor,20);
+		}
+		else
+		{
+			if(SensorValue(lineFollowerL)<= 2500)  //
+			{
+				repeatUntil(SensorValue(lineFollowerR)>=2100) //Left dynamic turn
+				{
+					startMotor(rightMotor,30);
+					startMotor(leftMotor,-35);
+				}
+			}
+			if (SensorValue(lineFollowerR) <= 2500)//line followers are switched
+			{
+				repeatUntil(SensorValue(lineFollowerL) >= 2100) //Right dynamic turning
+				{
+					startMotor(rightMotor,-35);
+					startMotor(leftMotor,30);
+				}
+			}
+			/*if ((SensorValue(lineFollowerR) <= 2200) && (SensorValue(lineFollowerR) <=2200)) // it will go straight till it reaches another line to read the code
+			{
+				stopMotor(rightMotor);
+				stopMotor(leftMotor);
+				wait(6);
+				startMotor(rightMotor,20);
+				startMotor(leftMotor,20);
+				wait(1);
+			}*/
+		}
+	}
+}
